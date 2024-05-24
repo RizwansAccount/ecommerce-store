@@ -11,7 +11,7 @@ const App = () => {
     <>
     {DATA.map((prod)=>{
       return (
-        <>
+      <>
           <p onClick={()=> dispatch(addproduct(prod)) } >{prod?.name}</p>
         </>
       )
