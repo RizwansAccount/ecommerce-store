@@ -1,5 +1,5 @@
 export const DATA = [
-    {id:1, name:'Burger', category: 'Fast Food', },
-    {id:2, name:'Chips', category: 'Fast Food', },
-    {id:3, name:'Pizza', category: 'Fast Food', },
+    {id:1, name:'Air Brags Senakers',  price:'$80.00', category: 'Fast Food', img_url : 'https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHNob2VzfGVufDB8fDB8fHww' },
+    {id:2, name:'Air Brags Senakers',  price:'$120.00',  category: 'Fast Food', img_url : 'https://images.unsplash.com/photo-1575537302964-96cd47c06b1b?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fHNob2VzfGVufDB8fDB8fHww' },
+    {id:3, name:'Air Brags Senakers',  price:'$350.00', category: 'Fast Food', img_url : 'https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHNob2VzfGVufDB8fDB8fHww' },
 ]
