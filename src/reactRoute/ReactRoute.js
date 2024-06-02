@@ -12,7 +12,6 @@ const ReactRoute = () => {
         <Navbar/>
         <Routes>
             <Route path={ROUTES.home} element={<HomePage/>} />
-            <Route path={ROUTES.shop} element={<ShopPage/>} />
             <Route path={ROUTES.cart} element={<CartPage/>} />
         </Routes>
     </BrowserRouter>

@@ -1,40 +1,19 @@
 import React from 'react'
-import { NavLink, useLocation } from 'react-router-dom'
+import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { ROUTES } from '../reactRoute/RouteConstants'
-import { CartIcon } from '../icons/SimpleIcons'
+import { AppLogo, CartIcon, HomeIcon } from '../icons/SimpleIcons'
 
 const Navbar = () => {
 
     const location = useLocation();
-
-    const fnActiveClassName =(route)=>{
-        return `mx-[15px] ${route == location.pathname ? 'text-[red]' : 'text-[black]'}`;
-    };
+    const navigate = useNavigate();
 
   return (
-    <div className='p-[25px] flex justify-around'>
-        
-        <div/>
+    <div className='px-[32px] pt-[18px] flex justify-between' >
+        <AppLogo/>
 
-        <div>
-        <NavLink className={fnActiveClassName(ROUTES.home)} to={ROUTES.home} >
-            Home
-        </NavLink>
-        <NavLink className={fnActiveClassName(ROUTES.cart)} to={ROUTES.cart} >
-            Cart
-        </NavLink>
-        <NavLink className={fnActiveClassName(ROUTES.about)} to={ROUTES.about} >
-            About
-        </NavLink>
-        <NavLink className={fnActiveClassName(ROUTES.contact)} to={ROUTES.contact} >
-            Contacts
-        </NavLink>
-        <NavLink className={fnActiveClassName(ROUTES.profile)} to={ROUTES.profile} >
-            Profile
-        </NavLink>
-        </div>
-
-        <div>
+        <div className='flex gap-[16px]' >
+            <HomeIcon/>
             <CartIcon/>
         </div>
 
