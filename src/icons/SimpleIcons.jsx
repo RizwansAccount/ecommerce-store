@@ -25,7 +25,7 @@ const MinusIcon =({color = "#989898", onClick}) => (
 
 const AppLogo =({}) => (
 <>
-    <img src="app_logo.png" />
+    <img src="app_logo.png" className="w-[120px]" />
 </>
 )
 
