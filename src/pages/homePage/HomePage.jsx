@@ -1,5 +1,6 @@
 import React from 'react';
 import { DATA } from '../../data';
+import ViewProductCard from '../../components/ViewProductCard';
 
 const HomePage = () => {
   return (
@@ -17,6 +18,8 @@ const HomePage = () => {
           )
         })}
       </div>
+
+      <ViewProductCard/>
     </div>
   )
 }
