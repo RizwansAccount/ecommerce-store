@@ -9,17 +9,19 @@ const CartPage = () => {
   const dispatch = useDispatch();
   const cartProductsList = useSelector(selectedCartSelector);
 
-  const fnIncreaseQuantity =(id)=>{
-    dispatch(incrementQuantity(id));
-  };
+  const fnIncreaseQuantity =(id)=>{ dispatch(incrementQuantity(id)) };
 
-  const fnDecreaseQuantity =(id)=>{
-    dispatch(decrementQuantity(id));
-  };
+  const fnDecreaseQuantity =(id)=>{ dispatch(decrementQuantity(id)) };
 
-  const fnRemoveProduct =(id)=>{
-    dispatch(removeproduct(id));
-  }
+  const fnRemoveProduct =(id)=>{ dispatch(removeproduct(id)) };
+
+  const fnGetTotalPrice=()=>{
+    let total = 0;
+    cartProductsList?.forEach((item)=>{
+      total += item.quantity* item.price;
+    })
+    return `${total}.00`;
+  };
 
   return (
     <div className='px-[24px] sm:px-[5.6vw] flex flex-col items-center gap-[32px] py-[42px]'>
@@ -83,6 +85,33 @@ const CartPage = () => {
             </>
           )
         })}
+
+        <div className='flex flex-col border-[1px] border-[#E1E2E7] rounded-[6px] gap-[24px] py-[18px] px-[15px]'>
+
+          <h1 className='font-semibold'>Cart Summary</h1>
+
+          <div className='w-full flex flex-col gap-[12px]'>
+
+            <div className='flex w-full justify-between'>
+              <span>Subtotal</span>
+              <span>{`$${fnGetTotalPrice()}`}</span>
+            </div>
+
+            <div className='flex w-full justify-between'>
+              <span>Tax</span>
+              <span>{`$0.00`}</span>
+            </div>
+
+            <hr/>
+
+            <div className='flex w-full justify-between'>
+              <span>Total</span>
+              <span>{`$${fnGetTotalPrice()}`}</span>
+            </div>
+
+          </div>
+
+        </div>
 
       </div>
 
