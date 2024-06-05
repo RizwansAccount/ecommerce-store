@@ -28,7 +28,7 @@ const ViewProductCard = ({ selectedProduct, setSelectedProduct }) => {
   };
 
   return (
-    <div className='absolute inset-0 bg-[#00000040] flex items-center justify-center'>
+    <div className='fixed inset-0 bg-[#00000040] flex items-center justify-center'>
 
       <div className='rounded-[20px] bg-[#FFF] relative max-w-[1060px] max-lg:max-w-[600px] max-lg:m-[24px] overflow-hidden grid lg:grid-cols-2 grid-cols-1 max-h-[700px]'>
 

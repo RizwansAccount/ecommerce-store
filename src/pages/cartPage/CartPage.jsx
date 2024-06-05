@@ -52,7 +52,7 @@ const CartPage = () => {
 
                     <div className="flex flex-col gap-[4px]">
                       <h3 className='text-[18px] text-[#333] font-[600]'>{cart?.name}</h3>
-                      <p className='text-[#7D8494] text-[12px]'>Color : {cart?.color}</p>
+                      <p className='text-[#7D8494] text-[12px]'>Color : {cart?.color?.replace('dark','')}</p>
                     </div>
 
                     <p onClick={()=> fnRemoveProduct(cart?.id)} className='text-[12px] font-semibold text-primary cursor-pointer hover:opacity-60 transition-all'>
