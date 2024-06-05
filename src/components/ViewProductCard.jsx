@@ -1,11 +1,16 @@
 import React, { useState } from 'react'
 import { AddIcon, CrossIcon, MinusIcon } from '../icons/SimpleIcons'
 import RadioButton from './RadioButton'
+import { useDispatch } from 'react-redux'
+import { addproduct } from '../redux/CartReducer'
 
 const ViewProductCard = ({ selectedProduct, setSelectedProduct }) => {
 
-  const {name, price, img_url, description, colors} = selectedProduct;
+  const dispatch = useDispatch();
+
+  const { id, name, price, img_url, description, colors} = selectedProduct;
   const [selectedColorIndex, setSelectedColorIndex] = useState(0);
+  const [selectedColor, setSelectedColor] = useState('');
   const [prodQuantity, setProdQuantity] = useState(1);
 
   const fnIncreaseQuantity =()=> setProdQuantity((pre)=> pre+1);
@@ -14,6 +19,12 @@ const ViewProductCard = ({ selectedProduct, setSelectedProduct }) => {
     if(prodQuantity > 1) {
       setProdQuantity((pre)=> pre-1)
     } 
+  };
+
+  const fnAddToCart =()=>{
+    const addToCartData = {id, name, price, img_url, color : selectedColor, quantity : prodQuantity };
+    dispatch(addproduct(addToCartData));
+    setSelectedProduct(null);
   };
 
   return (
@@ -32,7 +43,7 @@ const ViewProductCard = ({ selectedProduct, setSelectedProduct }) => {
           <div className='flex flex-col gap-[16px] max-lg:gap-[8px]'>
 
             <h1 className='text-[#333] text-[24px] font-[600] select-none'>{name}</h1>
-            <p className='text-primary select-none'>{price}</p>
+            <p className='text-primary select-none'>{`$${price}`}</p>
 
           </div>
 
@@ -54,13 +65,17 @@ const ViewProductCard = ({ selectedProduct, setSelectedProduct }) => {
 
               {colors?.map((color, i)=>{
                 return (
-                  <RadioButton color={color} active={selectedColorIndex == i} onClick={()=> setSelectedColorIndex(i)}  />
+                  <RadioButton color={color} active={selectedColorIndex == i} onClick={()=> { setSelectedColor(color); setSelectedColorIndex(i)}}  />
                 )
               })}
 
             </div>
 
           </div>
+
+          <span onClick={()=> fnAddToCart()} className='bg-primary cursor-pointer text-white px-[12px] py-[8px] w-fit rounded-[6px]' >
+            Add to Cart
+          </span>
 
           <div className='flex flex-col items-start gap-[16px]  max-lg:gap-[8px]'>
 

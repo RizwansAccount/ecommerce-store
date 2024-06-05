@@ -1,9 +1,16 @@
-const CartIcon =({color = "#2D58C8", onClick})=>(
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none" onClick={onClick} style={{cursor:'pointer'}}>
-        <path d="M3.06164 14.4968L3.42688 12.354C3.85856 9.82137 4.0744 8.55505 4.92914 7.80529C5.78389 7.05554 7.01171 7.05554 9.46734 7.05554H14.5327C16.9883 7.05554 18.2161 7.05554 19.0709 7.80529C19.9256 8.55505 20.1414 9.82137 20.5731 12.354L20.9384 14.4968C21.5357 18.0015 21.8344 19.7538 20.9147 20.9046C19.995 22.0555 18.2959 22.0555 14.8979 22.0555H9.1021C5.70406 22.0555 4.00504 22.0555 3.08533 20.9046C2.16562 19.7538 2.4643 18.0015 3.06164 14.4968Z" stroke={color} stroke-width="1.4"/>
-        <path d="M7.5 9.05554L7.71501 6.04537C7.87559 3.7973 9.7462 2.05554 12 2.05554C14.2538 2.05554 16.1244 3.7973 16.285 6.04537L16.5 9.05554" stroke={color} stroke-width="1.4" stroke-linecap="round"/>
-    </svg>
-);
+const CartIcon =({color = "#2D58C8", counter, onClick})=> {
+    return (
+        <div className="relative">
+            <span className="absolute left-[12px] bottom-[32px] bg-primary text-white text-[12px] h-[20px] w-[20px] flex items-center justify-center rounded-full">
+                {counter}
+            </span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none" onClick={onClick} style={{cursor:'pointer'}}>
+                <path d="M3.06164 14.4968L3.42688 12.354C3.85856 9.82137 4.0744 8.55505 4.92914 7.80529C5.78389 7.05554 7.01171 7.05554 9.46734 7.05554H14.5327C16.9883 7.05554 18.2161 7.05554 19.0709 7.80529C19.9256 8.55505 20.1414 9.82137 20.5731 12.354L20.9384 14.4968C21.5357 18.0015 21.8344 19.7538 20.9147 20.9046C19.995 22.0555 18.2959 22.0555 14.8979 22.0555H9.1021C5.70406 22.0555 4.00504 22.0555 3.08533 20.9046C2.16562 19.7538 2.4643 18.0015 3.06164 14.4968Z" stroke={color} stroke-width="1.4"/>
+                <path d="M7.5 9.05554L7.71501 6.04537C7.87559 3.7973 9.7462 2.05554 12 2.05554C14.2538 2.05554 16.1244 3.7973 16.285 6.04537L16.5 9.05554" stroke={color} stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+        </div>
+    )
+};
 const HomeIcon =({color = "#333333", onClick})=>(
     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="23" viewBox="0 0 22 23" fill="none" onClick={onClick} style={{cursor:'pointer'}}>
         <path d="M8.24945 20.2222L8.01971 17.0057C7.89619 15.2764 9.26582 13.8055 10.9994 13.8055C12.7331 13.8055 14.1027 15.2764 13.9792 17.0057L13.7494 20.2222" stroke={color} stroke-width="1.4"/>
@@ -28,9 +35,9 @@ const CrossIcon =({color = "#FFFFFF", onClick}) => (
     </svg>
 )
 
-const AppLogo =({}) => (
+const AppLogo =({className, onClick}) => (
 <>
-    <img src="app_logo.png" className="w-[120px]" />
+    <img src="app_logo.png" className={`${className} w-[120px] cursor-pointer`} onClick={onClick} />
 </>
 )
 

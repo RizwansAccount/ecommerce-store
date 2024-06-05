@@ -14,7 +14,7 @@ const HomePage = () => {
               <img className='h-[159px] w-full rounded-[12px] object-cover' src={prod?.img_url} />
 
               <h1 className='mt-[12px] font-semibold' >{prod?.name}</h1>
-              <p className='mt-[9px] text-primary text-[15px] font-medium' >{prod?.price}</p>
+              <p className='mt-[9px] text-primary text-[15px] font-medium' >{`$${prod?.price}`}</p>
             </div>
           )
         })}
