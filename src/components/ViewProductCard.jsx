@@ -1,39 +1,62 @@
-import React from 'react'
-import { AddIcon, MinusIcon } from '../icons/SimpleIcons'
+import React, { useState } from 'react'
+import { AddIcon, CrossIcon, MinusIcon } from '../icons/SimpleIcons'
 import RadioButton from './RadioButton'
 
-const ViewProductCard = () => {
+const ViewProductCard = ({ selectedProduct, setSelectedProduct }) => {
+
+  const {name, price, img_url, description, colors} = selectedProduct;
+  const [selectedColorIndex, setSelectedColorIndex] = useState(0);
+  const [prodQuantity, setProdQuantity] = useState(1);
+
+  const fnIncreaseQuantity =()=> setProdQuantity((pre)=> pre+1);
+
+  const fnDecreaseQuantity =()=> {
+    if(prodQuantity > 1) {
+      setProdQuantity((pre)=> pre-1)
+    } 
+  };
+
   return (
     <div className='absolute inset-0 bg-[#00000040] flex items-center justify-center'>
 
-      <div className='rounded-[20px] bg-[#FFF] max-w-[1060px] max-lg:max-w-[600px] max-lg:m-[24px] overflow-hidden grid lg:grid-cols-2 grid-cols-1 max-h-[700px] overflow-y-scroll'>
+      <div className='rounded-[20px] bg-[#FFF] relative max-w-[1060px] max-lg:max-w-[600px] max-lg:m-[24px] overflow-hidden grid lg:grid-cols-2 grid-cols-1 max-h-[700px] overflow-y-scroll'>
 
-        <img src='/images/product1.png' className='lg:h-full max-lg:h-[300px] w-full object-cover object-center' />
+        <div onClick={()=> setSelectedProduct(null)} style={{borderBottomLeftRadius: '20px', borderTopRightRadius : '20px'}} className='bg-primary cursor-pointer absolute right-0 top-0 p-[12px]' >
+          <CrossIcon/>
+        </div>
+
+        <img src={img_url} className='lg:h-full max-lg:h-[300px] w-full object-cover object-center select-none' />
 
         <div className='p-[54px] flex flex-col gap-[32px] w-full max-lg:p-[24px] max-lg:gap-[24px]'>
 
           <div className='flex flex-col gap-[16px] max-lg:gap-[8px]'>
 
-            <h1 className='text-[#333] text-[24px] font-[600]'>Air Bargs Sneaker</h1>
-            <p className='text-primary'>$80.00</p>
+            <h1 className='text-[#333] text-[24px] font-[600] select-none'>{name}</h1>
+            <p className='text-primary select-none'>{price}</p>
 
           </div>
 
           <div className='flex items-center gap-[32px] max-lg:gap-[8px]'>
 
-            <span className='flex items-center'>
-              <MinusIcon /> {'1'} <AddIcon />
-            </span>
+            <div className='rounded-[4px] h-[32px] w-[62px] flex items-center justify-around border-[1px] border-[#E3E4E8]' >
+              <span onClick={()=> fnIncreaseQuantity()} className='cursor-pointer select-none'> 
+                <AddIcon /> 
+              </span> 
+              <span className='text-primary font-semibold' >
+                {prodQuantity}
+              </span> 
+              <span onClick={()=> fnDecreaseQuantity()} className='cursor-pointer select-none'>
+                <MinusIcon /> 
+              </span>
+            </div>
 
-            <div className='flex items-center gap-[20px]'>
+            <div className='flex items-center gap-[20px] select-none'>
 
-              <RadioButton color='#181516' active />
-
-              <RadioButton color='#BB885C' />
-
-              <RadioButton color='#103E2D' />
-
-              <RadioButton color='#2E4E3C' />
+              {colors?.map((color, i)=>{
+                return (
+                  <RadioButton color={color} active={selectedColorIndex == i} onClick={()=> setSelectedColorIndex(i)}  />
+                )
+              })}
 
             </div>
 
@@ -41,10 +64,10 @@ const ViewProductCard = () => {
 
           <div className='flex flex-col items-start gap-[16px]  max-lg:gap-[8px]'>
 
-            <h3 className='text-primary text-[18px]'>Description :-</h3>
+            <h3 className='text-primary text-[18px] select-none'>Description :-</h3>
 
-            <p className='text-[14px] text-[#BBB]'>
-              {"The Nike Air Max 270 is renowned for its stylish design and superior comfort. It features Nike’s largest-ever Air unit in the heel, providing a soft, cushioned ride. The neoprene stretch bootie construction offers a snug, sock-like fit that adapts to your foot. Its breathable mesh upper keeps your feet cool, while the sleek lines and bold colorways ensure you stand out. Ideal for both casual wear and light exercise, the Air Max 270 combines functionality with a modern aesthetic. Whether you're walking around the city or heading to a casual event, this shoe provides both comfort and style."}
+            <p className='text-[14px] text-[#BBB] max-le select-none'>
+              {description}
             </p>
 
           </div>

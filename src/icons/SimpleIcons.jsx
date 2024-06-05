@@ -22,6 +22,11 @@ const MinusIcon =({color = "#989898", onClick}) => (
         <path d="M11 7H3" stroke={color} stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
 )
+const CrossIcon =({color = "#FFFFFF", onClick}) => (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color={color}fill="none" onClick={onClick}>
+        <path d="M19.0005 4.99988L5.00045 18.9999M5.00045 4.99988L19.0005 18.9999" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+)
 
 const AppLogo =({}) => (
 <>
@@ -29,4 +34,4 @@ const AppLogo =({}) => (
 </>
 )
 
-export { CartIcon, AppLogo, HomeIcon, AddIcon, MinusIcon };
+export { CartIcon, AppLogo, HomeIcon, AddIcon, MinusIcon, CrossIcon };
